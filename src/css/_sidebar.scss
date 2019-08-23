@@ -1,0 +1,155 @@
+.wrapper {
+//    position: fixed !important;
+//    width: 100%;
+//    height: 100%;
+//    background: #0000006b;
+//    z-index: 9999;
+//    display: none;
+//    transition: all 0.1s linear;
+    aside {
+        position: fixed!important;
+        top: 0;
+        right: -400px;
+        overflow-y: scroll; 
+        height: 100%;
+        width: 400px;
+        background: #fff;
+        z-index: 9999;
+        transition: all 0.4s linear;
+        @media(max-width:768px){
+            width: 380px !important;
+        }
+        .nav {
+
+            background: #1C2938;
+
+            .nav-link {
+                color: #858585;
+                font-family: 'Overpass Mono', monospace;
+                font-weight: 700;
+                font-size: 15px;
+                text-transform: uppercase;
+                padding: .3rem 1rem;
+                cursor: pointer;
+                .fa-close{
+                    cursor: pointer;
+                }
+            }
+
+            .nav-link.active {
+                color: #fff;
+                background: none;
+            }
+        }
+
+        .SideHeading {
+            font-size: 22px;
+            font-family: 'Barlow', sans-serif !important;
+            font-weight: 900;
+        }
+
+       
+
+        .profileView {
+            max-height: 160px;
+            max-width: 160px;
+        }
+
+        .input-group {
+            width: 40%;
+
+            .custom-file {
+                .custom-file-input {
+                    border-radius: 0;
+                }
+
+                .custom-file-label {
+                    border-radius: 0;
+                }
+
+            }
+
+            .custom-file-label::after {
+                content: '' !important;
+                background: none;
+                border: 0;
+            }
+
+            .input-group-text {
+                border-radius: 0 !important;
+                background: #1C2938;
+                color: #fff;
+            }
+        }
+
+        .protext {
+            font-size: 13px;
+
+        }
+
+        label {
+            font-size: 15px;
+            colo: #1C2938;
+        }
+
+        .form-control {
+            color: #3B3B3B;
+            font-size: 15px;
+            border-radius: 0;
+            font-family: 'Overpass Mono', monospace;
+            font-weight: 700;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        .deposit {
+            strong {
+                font-family: 'Overpass Mono', monospace;
+                font-weight: 700;
+            }
+
+            p {
+                font-family: 'Overpass Mono', monospace;
+                font-weight: 700;
+                font-size: 13px
+            }
+        }
+      
+  .divider{
+      position: relative;
+            span{
+                    position: absolute;
+    left: 0;
+    right: 0;
+    background: #fff;
+    width: 70px;
+    text-align: center;
+    top: -8px;
+    margin: auto;
+            }
+        }
+    }
+
+    #scroll::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    #scroll::-webkit-scrollbar {
+        width: 5px;
+        background-color: #3B3B3B;
+    }
+
+    #scroll::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: #3B3B3B;
+    }
+
+    
+
+
+}

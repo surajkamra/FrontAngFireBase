@@ -1,0 +1,96 @@
+.navbar {
+    background: #fff;
+
+    .navbar-text {
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 12px;
+
+    }
+
+    .navbar-nav {
+        .nav-item {
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 15px;
+
+            @media(max-width:768px) {
+                height: 40px;
+                width: 40px;
+                margin: 0px 7px;
+            }
+
+            .nav-link {
+                padding-right: 2rem;
+                padding-left: 2rem;
+
+                i {
+                    font-size: 25px;
+                    color: #1C2938;
+                }
+            }
+
+            .dropdown-toggle::after {
+                display: none;
+            }
+            .dropdown-item{
+                  white-space: normal;
+                font-size: 12px;
+                .name{
+                    color: #FF9C91;
+                }
+            }
+            .dropdown-menu {
+                position: absolute !important;
+                top: 125%;
+                left: -124px;
+                  
+                padding: 1rem 0;
+                border: 0;
+                box-shadow: 1px 2px 15px #ccc;
+                min-width: 19rem;
+                max-width: 19rem;
+            }
+
+        }
+
+
+        .nav-item.active {
+            border: 2px solid red;
+
+        }
+
+    }
+
+    .zapSize {
+        width: 22px;
+        border: 2px solid red;
+    }
+}
+
+.tooltip-inner {
+    background-color: #CD3F3E;
+    top: 20px;
+}
+
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-right-color: #CD3F3E !important;
+    top: 20px;
+}
+
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-left-color: #fff !important;
+}
+
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-right-color: #fff !important;
+}
+
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-bottom-color: #CD3F3E !important;
+    top: 0px;
+}

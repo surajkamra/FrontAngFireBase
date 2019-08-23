@@ -1,0 +1,67 @@
+.formWraper {
+    form {
+        h1 {
+            font-size: 25px;
+        }
+
+        p {
+            font-weight: 600;
+
+            
+        }
+
+    }
+
+    .caruselWraper {
+        left: -192px;
+        max-width: 700px;
+        top: 50px;
+
+        @media(max-width:768px) {
+            position: relative !important;
+            left: 0px;
+             top: 0px;
+        }
+
+        .carousel-caption {
+            bottom: 30%;
+            right: 0%;
+          
+            left: auto;
+            text-align: left !important;
+            padding: 15px 20px;
+            text-align: left !important;
+            color: #000;
+            background: #fff;
+            max-width: 294px;
+
+            @media(max-width:992px) {
+               max-width: auto;
+            }
+
+        }
+    }
+
+}
+
+.form-control {
+    color: #3B3B3B;
+    font-size: 15px;
+    border-radius: 0;
+    font-family: 'Overpass Mono', monospace;
+    font-weight: 700;
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+.input-group-text{
+    border:0;
+border-left: 1px solid #fff;
+}
+.fa-eye{
+      color: #9c9898 !important;
+}
+.color{
+    color: #FF9C91;
+}

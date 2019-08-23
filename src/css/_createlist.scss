@@ -1,0 +1,70 @@
+.createListWrapper {
+    .pickView {
+        border: 2px dashed gray;
+        max-width: 100%;
+        height: 250px;
+    }
+    .pickView-media{
+        border: 2px dashed gray;
+       width: 100px;
+        height: 100px; 
+        display: inline-block;
+    }
+
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        margin-top: 15px;
+        width: 100%;
+
+        .btn {
+            border: 1px solid #e1e1e1;
+            color: #242424;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 0;
+            font-size: 15px;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+            
+        }
+
+        input[type=file] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+    }
+
+    .upload-media {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        margin-top: 15px;
+        width: 100%;
+
+        .btn {
+            border: 1px solid #e1e1e1;
+            color: #242424;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 0;
+            font-size: 15px;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        input[type=file] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+    }
+}

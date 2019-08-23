@@ -1,0 +1,179 @@
+body {
+    font-family: 'Overpass Mono', monospace;
+}
+
+.font-Barlow-bold {
+    font-weight: bold;
+    font-family: 'Barlow', sans-serif !important;
+}
+
+.font-Barlow-reg {
+    font-weight: 400;
+    font-family: 'Barlow', sans-serif !important;
+}
+
+.font-Barlow-midium {
+    font-weight: 500;
+    font-family: 'Barlow', sans-serif !important;
+}
+
+.font-Mono-reg {
+    font-weight: 400;
+    font-family: 'Overpass Mono', monospace;
+}
+
+.font-Mono-bold {
+    font-weight: 700;
+    font-family: 'Overpass Mono', monospace;
+}
+
+.font-Mono-semi {
+    font-weight: 600;
+    font-family: 'Overpass Mono', monospace;
+}
+
+.lr-space {
+    padding: 0px 80px;
+
+    @media(max-width:768px) {
+        padding: 0px 15px;
+    }
+}
+
+.mainHeading {
+    color: #1C2938;
+    font-size: 55px;
+    text-transform: uppercase;
+
+    @media(max-width:768px) {
+        font-size: 25px;
+    }
+}
+
+.subHeading {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #1C2938;
+}
+
+.subPara {
+    font-size: 18px;
+    color: #1C2938;
+}
+
+.heroBtn {
+    border: 2px solid #1C2938;
+    color: #1C2938;
+    background: none;
+    font-size: 18px !important;
+    font-weight: 900;
+    font-family: 'Overpass Mono', monospace;
+    line-height: 24px;
+    padding-top: 10px;
+}
+
+.saveBtn {
+    background: #1C2938;
+    border-radius: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: .6rem .75rem 0.3rem .74rem;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &:hover {
+        background: #1C2938;
+        color: #fff;
+    }
+}
+
+.bg-none {
+    background: none !important;
+    color: #1C2938 !important;
+}
+
+.bg-pink {
+    background: #FF9C91 !important;
+    font-weight: 700;
+}
+
+.commonHeading {
+    font-weight: bold;
+    font-family: 'Barlow', sans-serif !important;
+    text-transform: uppercase;
+}
+
+.adventure {
+    background: #E3E6E7 !important;
+    border-radius: 50px;
+    color: #1C2938;
+}
+
+.placeholderImages {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    .fa-picture-o {
+        color: #ccc;
+    }
+}
+
+.border-radi {
+    border-radius: 50px !important;
+}
+
+.blue {
+    background: #1C2938;
+}
+
+#social_side_links {
+    position: fixed;
+    top: 30%;
+    left: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 99;
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+@media(max-width:768px){
+        left: -10px;
+    }
+    li {
+        background: #fff;
+        margin: 6px 0px;
+        width: 24px;
+        height: 24px;
+        padding: 1px 5px;
+
+        i {
+            color: #1C2938;
+        }
+    }
+
+
+}
+
+#text {
+     position: fixed;
+    top: 82%;
+      left: -59px;
+
+    z-index: 99;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    display: inline;
+    padding: 0px 6px;
+    background: #fff;
+    @media(max-width:768px){
+        left: -73px;
+    }
+
+    
+}

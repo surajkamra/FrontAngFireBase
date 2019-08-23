@@ -1,0 +1,81 @@
+
+.footerContainer{
+    background: #1C2938;
+    .footer-heading{
+        color: #F4F6F6;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-family: 'Barlow', sans-serif !important;
+        font-weight: bold;
+    }
+    .footerLeftSec{
+        .list-group-item{
+            background: none;
+            border: 0;
+            padding: .1rem 0rem;
+            color: #F4F6F6;
+            font-size: 16px;
+               font-family: 'Overpass Mono', monospace;
+            font-weight: 400;
+        }
+    }
+    .footerRightSec{
+        .list-group-item{
+            background: none;
+            border: 0;
+            padding: .1rem 0rem;
+           font-size: 23px;
+            line-height: 32px;
+           
+            .badge-pill{
+                font-size: 14px;
+                vertical-align: top;
+                 color:#fff;
+                color: #847f7f;
+                padding-left: 0;
+            }
+            a{
+                color:#fff;
+                text-decoration: none;
+                @media(max-width:768px){
+                    font-size: 16px;
+                }
+            }
+        }
+       
+        }
+     .footerForm{
+            .form-control{
+                background: #2F3C4A;
+                color: #fff;
+                border-color: #2F3C4A;
+                 font-family: 'Overpass Mono', monospace;
+                font-weight: 700;
+                font-size: 14px;
+                &:focus{
+                    box-shadow: none;
+                }
+            }
+         .btn{
+              background: #1C2938;
+             border:2px solid #fff;
+             border-radius: 0;
+             color:#fff;
+             font-weight: 600;
+             font-size: 18px;
+         }
+    }
+   
+}
+
+.copyright{
+       background: #1C2938;
+    p{
+        font-size: 13px;
+    }
+}
+@media(max-width:768px){
+     .w-m-100{
+        width: 100% !important;
+    }
+}
