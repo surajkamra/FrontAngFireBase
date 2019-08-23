@@ -179,3 +179,48 @@ for (var i = 0; i < numbers.length; i++) {
 }
  */
 
+11.// How to find top two numbers from an integer array?
+
+/**
+ * Sort and get K and K-1
+ */
+
+12. // Remove Duplicates in Place
+/** 
+   * uniqueArray = a.filter(function(item, pos) {
+    return a.indexOf(item) == pos;
+  })
+*/
+
+13. // Remove particular Element from array
+
+/**
+ * for(var i = array.length - 1; i >= 0; i--) {
+    if(array[i] === number) {
+       array.splice(i, 1);
+    }
+  }
+
+ var array = [2, 5, 9];
+  var index = array.indexOf(5);
+  if (index > -1) {
+    array.splice(index, 1);
+  }
+ */
+
+14. // How to find sub array with maximum sum in an array of positive and negative number?
+
+/**
+ * function SubSequence(a){
+    var now = 0,prev =0;
+    for(var i = 0;i < a.length;i++){  
+      prev = Math.max(0,prev + a[i]);
+      now = Math.max(prev,now);
+    }
+    return now;
+  }
+
+ console.log(SubSequence([-1,-2,-3,4,6,7]));
+ */
+
+
