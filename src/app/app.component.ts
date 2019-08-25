@@ -51,9 +51,6 @@ export class AppComponent {
     // })
   }
 
-  getStarted(){
-    this.router.navigate(['/register']);
-  }
 
   getUsers(){
     return this.db.collection('/users').valueChanges();
