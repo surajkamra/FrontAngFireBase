@@ -4,7 +4,7 @@
       <div class="col-sm-7 col-md-7 border">
           <div class="row">
               <div class="col-12 col-sm-12 col-md-12 col-lg-8 justify-content-start">
-                  <form class=" p-4 row">
+                  <form class=" p-4 row" >
                       <div class="col-12">
                           <div class="border-bottom mb-4">
                           <h1 class="font-Barlow-bold">Login</h1>
@@ -14,13 +14,13 @@
                     
                       <div class="form-group col-12">
                           <label class="font-Barlow-reg">Email</label>
-                          <input type="email" class="form-control" placeholder="name@example.com">
+                          <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="name@example.com">
                       </div>
                       <div class="form-group col-12">
                             <label class="font-Barlow-reg">Password</label>
                           <div class="input-group">
                                
-                             <input type="password" class="form-control " placeholder="Password">
+                             <input type="password" class="form-control " name="password" [(ngModel)]="user.password" placeholder="Password">
                              
                           </div>
                          
@@ -32,7 +32,7 @@
                       </div>
                     
                       <div class="col-3 col-md-3 mt-3 mt-md-3">
-                          <a class="btn saveBtn mb-3 px-2 mb-md-0 bg-none border-dark border font-Mono-semi" href="#" role="button">Login</a>
+                          <a class="btn saveBtn mb-3 px-2 mb-md-0 bg-none border-dark border font-Mono-semi" href="#" role="button" (click)="submit()">Login</a>
                          
                       </div>
                       <div class="col-9 col-md-9 mt-3">
