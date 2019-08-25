@@ -4,12 +4,13 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
+import {Router} from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'jokes';
@@ -19,9 +20,12 @@ export class AppComponent {
   constructor(private firebaseService:FirebaseService,
     private fns: AngularFireFunctions,
     private db: AngularFirestore,
-    private afuth:AngularFireAuth){
+    private afuth:AngularFireAuth,
+    private router:Router
+    ){
 
   }
+
 
   submit(){
     this.afuth.auth.createUserWithEmailAndPassword('surajkumarkamra234@gmail.com','Abc@1234').then(
@@ -45,6 +49,10 @@ export class AppComponent {
     // this.firebaseService.createUser(this.modalInput).then(it=>{
     //   console.log(it);
     // })
+  }
+
+  getStarted(){
+    this.router.navigate(['/register']);
   }
 
   getUsers(){
