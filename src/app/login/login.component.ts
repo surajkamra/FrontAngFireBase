@@ -3,6 +3,7 @@ import { FirebaseService } from '../firebase.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -49,6 +50,17 @@ export class LoginComponent implements OnInit {
     // this.firebaseService.createUser(this.modalInput).then(it=>{
     //   console.log(it);
     // })
+  }
+
+  loginWithGoogle(){
+    let user =this.googleSignin();
+    console.log(user);
+  }
+
+  async googleSignin() {
+    const provider = new auth.GoogleAuthProvider();
+    const credential = await this.afuth.auth.signInWithPopup(provider);
+    return credential;
   }
 
 }
