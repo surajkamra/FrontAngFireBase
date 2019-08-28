@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  showSide=false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggle(){
+   let element= document.getElementsByClassName("siderNav")[0];
+   element['style'].right = '0px';
   }
 
 }

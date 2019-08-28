@@ -17,6 +17,8 @@ export class RegisterComponent implements OnInit {
     password:'',
     confirmPassword:''
   }
+  confirmShow=false;
+  show=false;
 
   constructor(private firebaseService:FirebaseService,
     private fns: AngularFireFunctions,

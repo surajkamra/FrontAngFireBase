@@ -12,4 +12,9 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggle(){
+    let element= document.getElementsByClassName("siderNav")[0];
+   element['style'].right = '-400px';
+  }
+
 }

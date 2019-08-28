@@ -1,3 +1,229 @@
-<p>
-  sidebar works!
-</p>
+<div class="wrapper">
+  <aside id="scroll" class="px-0 siderNav border-left">
+      <div class="nav py-4 flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profile <i (click)="toggle()" class="fa fa-close fa-2x float-right mr-2" id="close"></i></a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Share</a>
+          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Payment</a>
+          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Payout/Deposit</a>
+          <a class="nav-link" href="#">Logout</a>
+      </div>
+      <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active p-4" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab ">
+              <div class="row">
+                  <div class="col-6">
+                      <h2 class="SideHeading"> Edit Profile</h2>
+                  </div>
+                  <div class="col-6 text-right">
+                      <a class="btn btn-info saveBtn" href="#" role="button">Save</a>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-4">
+                      <div class="profileView">
+                          <img src="../assets/images/casual-face.png" alt="casual-face" class="img-fluid">
+                      </div>
+
+                  </div>
+                  <div class="col-8">
+                      <div class="input-group mt-4 mb-1">
+                          <div class="custom-file order-1">
+                              <input type="file" class="custom-file-input border-left-0" id="inputGroupFile02">
+                              <label class="custom-file-label" for="inputGroupFile02"></label>
+                          </div>
+                          <div class="input-group-append order-0">
+                              <span class="input-group-text border-right-0" id=""><i class="fa fa-upload"></i></span>
+                          </div>
+                      </div>
+                      <p class="protext">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+
+                  </div>
+                  <div class="col-12">
+                      <form class="row">
+                          <div class="form-group col-12">
+                              <label>Name</label>
+                              <input type="email" class="form-control w-25" placeholder="Name">
+
+                          </div>
+                          <div class="form-group col-12">
+                              <label>Bio</label>
+                              <textarea class="form-control" rows="3" placeholder="Enter Bio"></textarea>
+                          </div>
+                          <div class="form-group col-12">
+                              <label>Date of Birth</label>
+                              <div class="rad-date row">
+                                  <div class="dropdown col-4">
+                                      <select id="selectDay" class="form-control">
+                                          <option>Day</option>
+                                      </select>
+                                  </div>
+                                  <div class="dropdown col-4">
+                                      <select id="selectMonth" class="form-control">
+                                          <option>Month</option>
+                                      </select>
+                                  </div>
+
+                                  <div class="dropdown col-4">
+                                      <select id="selectYear" class="form-control">
+                                          <option>Year</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                      </form>
+                  </div>
+
+
+
+
+              </div>
+          </div>
+          <div class="tab-pane fade p-4" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Share</div>
+          <div class="tab-pane fade p-4" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+              <div class="row">
+                  <div class="col-6">
+                      <h2 class="SideHeading">Payment Details</h2>
+                  </div>
+                  <div class="col-6 text-right">
+                      <a class="btn btn-info saveBtn" href="#" role="button">Save</a>
+                  </div>
+              </div>
+              <div class="row">
+
+
+                  <div class="col-12">
+                      <form class="row">
+                          <div class="form-group col-12">
+                              <label>Name</label>
+                              <input type="email" class="form-control w-25" placeholder="Name">
+
+                          </div>
+                          <div class="form-group col-12">
+                              <label>Number</label>
+                              <input type="email" class="form-control w-75" placeholder="Number">
+
+                          </div>
+                          <div class="form-group col-12">
+                              <label>CVC</label>
+                              <input type="email" class="form-control w-25" placeholder="CVC">
+
+                          </div>
+                          <div class="form-group col-5">
+                              <label>Exp Month</label>
+                              <div class="rad-date row">
+
+                                  <div class="input-group col-12">
+
+                                      <input type="text" aria-label="First name" class="form-control" placeholder="3">
+                                      <input type="text" aria-label="Last name" class="form-control" placeholder="March">
+                                  </div>
+
+
+                              </div>
+                          </div>
+                          <div class="form-group col-4">
+                              <label>Exp Year</label>
+                              <div class="dropdown col-12">
+
+                                  <input type="text" aria-label="Year" class="form-control" placeholder="Year">
+                              </div>
+                          </div>
+
+
+                      </form>
+                  </div>
+
+
+
+
+              </div>
+          </div>
+          <div class="tab-pane deposit fade p-4" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+              <div class="row mb-5">
+                  <div class="col-6">
+                      <h2 class="SideHeading">Deposit</h2>
+                  </div>
+                  <div class="col-6 text-right">
+                      <a class="btn btn-info saveBtn bg-none border" href="#" role="button">Edit Details</a>
+                  </div>
+              </div>
+              <div class="row  border-bottom mx-0 py-2">
+                  <div class="col-6">
+                      <strong>Wed, Mar 13</strong>
+                      <p class="mb-0">Delivered</p>
+                  </div>
+                  <div class="col-6 text-right">
+                      <a class="btn saveBtn bg-pink" href="#" role="button">$90.00</a>
+                  </div>
+              </div>
+              <div class="row  border-bottom mx-0 py-2">
+                  <div class="col-6">
+                      <strong>Wed, Mar 13</strong>
+                      <p class="mb-0">Delivered</p>
+                  </div>
+                  <div class="col-6 text-right">
+                      <a class="btn saveBtn bg-pink" href="#" role="button">$90.00</a>
+                  </div>
+              </div>
+              <div class="row mt-5">
+                  <div class="col-6">
+                      <h2 class="SideHeading">Deposit</h2>
+                  </div>
+                  <div class="col-6 text-right">
+                      <a class="btn btn-info saveBtn border" href="#" role="button">Save</a>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-12">
+                      <form class="row">
+                          <div class="form-group col-12">
+                              <label>Interac Email</label>
+                              <input type="email" class="form-control w-75" placeholder="somilsinghr8@gmail.com">
+                              <p class="divider border-bottom mt-5 d-block postition-relative"><span>Or</span></p>
+                          </div>
+
+                          <div class="form-group col-12">
+                              <label>Direct deposit bank number</label>
+                              <input type="text" class="form-control w-100" placeholder="474132132132165194984621">
+
+                          </div>
+                          <div class="form-group col-12">
+                              <label>Direct deposit transit number</label>
+                              <input type="text" class="form-control w-25" placeholder="1234">
+
+                          </div>
+                          <div class="form-group col-12">
+                              <label>Direct deposit institution number</label>
+                              <input type="text" class="form-control w-25" placeholder="424">
+
+                          </div>
+
+                          <div class="form-group col-12">
+
+                              <div class="rad-date row">
+
+                                  <div class="dropdown col-6">
+                                      <label>Country</label>
+                                      <select id="selectMonth" class="form-control d-block">
+                                          <option>Canada</option>
+                                      </select>
+                                  </div>
+
+                                  <div class="dropdown col-5">
+                                      <label>Currency</label>
+                                      <select id="selectYear" class="form-control d-block">
+                                          <option>CAD</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </aside>
+</div>

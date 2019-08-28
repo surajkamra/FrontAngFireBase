@@ -27,9 +27,9 @@
                             <label class="font-Barlow-reg">Set Password</label>
                           <div class="input-group">
                                
-                             <input type="password" class="form-control border-right-0" name="password" [ngModel] ="user.password" placeholder="Password">
+                             <input [type]="show ? 'text' : 'password'" class="form-control border-right-0" name="password" [ngModel] ="user.password" placeholder="Password">
                               <div class="input-group-append">
-                                  <span class="input-group-text  fa  fa-eye field-icon bg-none border-top border-right border-bottom "></span>
+                                  <span (click)="show=!show" class="input-group-text  fa  fa-eye field-icon bg-none border-top border-right border-bottom "></span>
 
                               </div>
                           </div>
@@ -40,9 +40,9 @@
                             <label class="font-Barlow-reg">Confirm Password</label>
                           <div class="input-group">
                                
-                             <input type="password" class="form-control border-right-0" name="confirmPassword" [(ngModel)]="user.confirmPassword" placeholder="Password">
+                             <input [type]="confirmShow ? 'text' : 'password'" class="form-control border-right-0" name="confirmPassword" [(ngModel)]="user.confirmPassword" placeholder="Password">
                               <div class="input-group-append">
-                                  <span class="input-group-text  fa  fa-eye field-icon bg-none border-top border-right border-bottom "></span>
+                                  <span (click)="confirmShow=!confirmShow" class="input-group-text  fa  fa-eye field-icon bg-none border-top border-right border-bottom "></span>
 
                               </div>
                           </div>
