@@ -1,7 +1,7 @@
 <div class="wrapper">
-  <aside id="scroll" class="px-0 siderNav border-left">
+  <aside id="scroll" [style.right.px]="sideBarClass ? '0' : -400" class="px-0 siderNav border-left">
       <div class="nav py-4 flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profile <i (click)="toggle()" class="fa fa-close fa-2x float-right mr-2" id="close"></i></a>
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profile <i (click)="sideBarClass=!sideBarClass" class="fa fa-close fa-2x float-right mr-2" id="close"></i></a>
           <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Share</a>
           <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Payment</a>
           <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Payout/Deposit</a>
