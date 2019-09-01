@@ -1,0 +1,265 @@
+// Mongo Db Insert 
+
+Insert Methods
+
+1. db.collection.insertOne({}) - Insert A single document in db
+
+2. db.collection.insertMany([{},{},{}])-  Insert Multiple documents in db.
+
+3. db.collection.insert() - Insert Single or Multiple document
+
+    db.products.insert(
+   [
+     { _id: 20, item: "lamp", qty: 50, type: "desk" },
+     { _id: 21, item: "lamp", qty: 20, type: "floor" },
+     { _id: 22, item: "bulk", qty: 100 }
+   ],
+   { ordered: false }
+)
+
+Update Methods
+
+1.updateOne - Update First Matching document
+
+   db.inventory.updateOne(
+    {"ite":"paper"},
+    {$set:{"size.uom":"cm","status":"p"},
+    $currentDate:{lastModified:true});
+
+2.updateMany - Upadte all the documents which has quantity less than that 50
+
+   db.inventory.updateMany(
+   {"qty":{$lt:50}},
+   {$set:{"size.uom":"cm","status":"p"},
+    $currentDate:{lastModified:true});
+
+3 replaceOne - To replace the entire document except the id field pass the entire document
+
+  db.inventory.replaceOne(
+   { item: "paper" },
+   { item: "paper", instock: [ { warehouse: "A", qty: 60 }, { warehouse: "B", qty: 40 } ] }
+)
+
+4.update -To update single or multiple document but by default the multi param is set true in update .
+
+
+Delete Methods
+
+1. deleteOne - delete at most single document based on condition
+
+   db.inventory.deleteOne({"status":"paper"});
+
+2.deleteMany - delete all the documents based on condition
+
+3. remove - delete single or multiple  documents based on condition.
+    
+SQl - MongoDb Mapping
+
+1. Select * from Employees -                                 db.collection.find({});
+
+2. Select * from Employees where status="A"  -               db.collection.find({"status":"A"})
+
+3. Select * from Employees where status in ("A","D") -       db.collection.find({"status":{$in:"A","D"}})
+
+4.SELECT * FROM inventory WHERE status = "A" AND qty < 30    db.collection.find({"status":"A",qty:{$lt:30}})
+
+5.SELECT * FROM inventory WHERE status = "A" OR qty < 30     db.collection.find({ $or:[{"status":"A"},{qty:{$lt:30}}]})
+
+6.SELECT * FROM inventory WHERE status = "A"                 db.collection.find({"status":"A",$or:[{qty:{$lt:30}},{"item:"/^P/"}]}})
+    AND ( qty < 30 OR item LIKE "p%")
+
+Nested Documents
+
+db.inventory.insertMany( [
+   { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+   { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "A" },
+   { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+   { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+   { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" }
+]);
+
+7. Complete Nested Document Find Condition                  db.collection.find({size: { h: 14, w: 21, uom: "cm" })
+
+8. Query on Nested Field                                    db.collection.find({"size.uom":"in"}),db.inventory.find( { "size.h": { $lt: 15 } } )
+
+9.Specify AND Condition                                     db.collection.find({"size.uom":"in","size.h":{$lt:30},"status":"A"})
+
+
+Nested Array
+
+db.inventory.insertMany([
+   { item: "journal", qty: 25, tags: ["blank", "red"], dim_cm: [ 14, 21 ] },
+   { item: "notebook", qty: 50, tags: ["red", "blank"], dim_cm: [ 14, 21 ] },
+   { item: "paper", qty: 100, tags: ["red", "blank", "plain"], dim_cm: [ 14, 21 ] },
+   { item: "planner", qty: 75, tags: ["blank", "red"], dim_cm: [ 22.85, 30 ] },
+   { item: "postcard", qty: 45, tags: ["blue"], dim_cm: [ 10, 15.25 ] }
+]);
+
+10.Match an Array                                           db.inventory.find( { tags: ["red", "blank"] } )
+
+11 Match an Array that 
+contains both the elements "red" and "blank",               db.collection.find({tags:{$all:['red','black']}})
+without regard to order 
+
+12 Query an Array for an Element                            db.collection.find({tags:"red"}) db.inventory.find( { dim_cm: { $gt: 25 } } 
+
+13Query an Array with Compound Filter Conditions            db.collection.find("dm_cm":{$gt:20,$lt:50})
+on the Array Elements 
+
+14.Query for an Array Element that Meets Multiple Criteria  db.collection.find("dm_cm":{$elemMatch:{$gt:20,$lt:50}})
+
+$elemmatch - to apply mutiple condition in embeded array document element
+
+15.where the second element in the array dim_cm is greater than 25: db.collection.find("dm-cm.1":{$gt:20})
+
+16Query an Array by Array Length                            db.collection.find({"tags":{$size:3}})
+
+
+Query an Array of Embedded Documents
+
+db.inventory.insertMany( [
+   { item: "journal", instock: [ { warehouse: "A", qty: 5 }, { warehouse: "C", qty: 15 } ] },
+   { item: "notebook", instock: [ { warehouse: "C", qty: 5 } ] },
+   { item: "paper", instock: [ { warehouse: "A", qty: 60 }, { warehouse: "B", qty: 15 } ] },
+   { item: "planner", instock: [ { warehouse: "A", qty: 40 }, { warehouse: "B", qty: 5 } ] },
+   { item: "postcard", instock: [ { warehouse: "B", qty: 15 }, { warehouse: "C", qty: 35 } ] }
+]);
+
+17 Query for a Document Nested in an Array                 db.collection.find({"instock":{"warehouse":"A","qty":5}})
+
+18 Specify a Query Condition on a Field in                 db.collection.find({"instock.qty":{$lte:5}})
+an Array of Documents
+
+19 Use the Array Index to Query for a Field                db.collection.find({"instock.0.qty":{$lte:5}})
+in the Embedded Document
+
+20 Specify Multiple Conditions for Array of Documents     db.collection.find({"instock":{$elemMatch:{qty:5,"warehouse":"A"}}}) db.inventory.find( { "instock": { $elemMatch: { qty: { $gt: 10, $lte: 20 } } } } )
+
+21 Combination of Elements Satisfies the Criteria         db.inventory.find( { "instock.qty": { $gt: 10,  $lte: 20 } } )
+
+22 SELECT _id, item, status from inventory WHERE status = "A"  db.find({"status":"A"},{item:1,status:1})
+
+23 SELECT item, status from inventory WHERE status = "A"       db.find({"status":"A"},{item:1,status:1,_id:0})
+
+24.SELECT _id, item from inventory WHERE status = "A"         db.find({"status":"A"},{ status: 0, instock: 0 })
+
+25 Return Specific Fields in Embedded Documents	              db.find({"status":"A"},{status:1,item:1,"size.um":1})
+
+26 Suppress Specific Fields in Embedded Documents             db.find({"status":"A"},{size.um:0})
+
+27 Projection on Embedded Documents in an Array               db.find({"status":"A"},{status:1,item:1,"instock.qty":1})
+
+28 Equality Filter                                            db.inventory.find( { item: null } )
+
+29 Type Check                                                 db.inventory.find( { item : { $type: 10 } } )
+
+30 Existence Check                                            db.inventory.find( { item : { $exists: false } } )
+
+31 SELECT id,                                                 db.find({},{user_id:1,status:1})
+       user_id,
+       status
+FROM people
+
+32 SELECT user_id, status                                     db.find({},{user_id:1,status:1,_id:0})
+FROM people
+
+33 SELECT *                                                   db.find({"status":"A"})
+FROM people
+WHERE status = "A"
+
+34 SELECT user_id, status                                      db.find({"status":"A"},{user_id:1,status:1,_id:0})
+FROM people
+WHERE status = "A"
+
+35 SELECT *
+FROM people                                                    db.find({status:{$ne:'A'}})
+WHERE status != "A"
+
+36 SELECT *
+FROM people
+WHERE status = "A"                                            db.find({status:"A",age:50})
+AND age = 50                                       
+
+
+37 SELECT *
+FROM people
+WHERE status = "A"                                            db.find({$or:[{status:"A"},{age:50}]})
+OR age = 50
+
+38 SELECT *         
+FROM people                                                   db.find({age:{$gt:25}})
+WHERE age > 25
+
+39 SELECT *
+FROM people                                                   db.find({age:{$lt:25}})
+WHERE age < 25
+
+40 SELECT *              
+FROM people                                                   db.find({age:{$gt:25,$lte:50}})
+WHERE age > 25
+AND   age <= 50
+
+
+41 SELECT *
+FROM people                                                  db.find({user_id:/bc/}),db.find({user_id:{$regex:/bc/}})
+WHERE user_id like "%bc%
+
+42 SELECT *
+FROM people                                                  db.find({user_id:/^bc/})         
+WHERE user_id like "bc%"
+
+43 SELECT *
+FROM people                                                  db.find({status:"A"}).sort(user_id:1)
+WHERE status = "A"
+ORDER BY user_id ASC
+
+
+44 SELECT *
+FROM people                                                    db.find({status:"A"}).sort(user_id:-1)
+WHERE status = "A"
+ORDER BY user_id DESC
+
+
+45 SELECT COUNT(*)                                            db.find().count() , db.collection.count()
+FROM people
+
+46 SELECT COUNT(user_id)                                      db.collection.count({user_id:{$exists:true}}) db.find({user_id:{$exists:true}}).count()
+FROM people
+
+47 SELECT COUNT(*)                                            db.collection.count({age:{$gt:30}}),db.find({age:{$gt:30}}).count()
+FROM people
+WHERE age > 30
+
+48 SELECT DISTINCT(status)                                   db.collection.aggregate([{$group:{_id:"$status"}}]),db.collection.distinct("status")
+FROM people
+
+49 SELECT *
+FROM people                                                  db.collection.find().limit(1)
+LIMIT 1
+
+50 SELECT *
+FROM people                                                  db.collection.find().limit(5).skip(10)
+LIMIT 5
+SKIP 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
