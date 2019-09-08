@@ -1,13 +1,16 @@
 <div class="wrapper">
   <aside id="scroll" [style.right.px]="sideBarClass ? '0' : -400" class="px-0 siderNav border-left">
-      <div class="nav py-4 flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Profile <i (click)="sideBarClass=!sideBarClass" class="fa fa-close fa-2x float-right mr-2" id="close"></i></a>
-          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Share</a>
-          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Payment</a>
-          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Payout/Deposit</a>
-          <a class="nav-link" href="#">Logout</a>
+ 
+      <div  class="nav py-4 flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a *ngIf="user" class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-contols="v-pills-home" aria-selected="true">Profile <i (click)="sideBarClass=!sideBarClass" class="fa fa-close fa-2x float-right mr-2" id="close"></i> </a>
+          <a *ngIf="!user" class="nav-link active" id="v-pills-home-tab" data-toggle="pill" [routerLink]="['/login']" role="tab" aria-contols="v-pills-home" aria-selected="true">Login <i (click)="sideBarClass=!sideBarClass" class="fa fa-close fa-2x float-right mr-2" id="close"></i> </a>
+          <a *ngIf="user" class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Share</a>
+          <a *ngIf="user" class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Payment</a>
+          <a *ngIf="user" class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Payout/Deposit</a>
+          <a *ngIf="user" class="nav-link" (click)="logout()">Logout</a>
       </div>
-      <div class="tab-content" id="v-pills-tabContent">
+      
+      <div *ngIf="user" class="tab-content" id="v-pills-tabContent">
           <div class="tab-pane fade show active p-4" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab ">
               <div class="row">
                   <div class="col-6">
@@ -41,30 +44,33 @@
                       <form class="row">
                           <div class="form-group col-12">
                               <label>Name</label>
-                              <input type="email" class="form-control w-25" placeholder="Name">
+                              <input type="email" name="names" class="form-control w-25" placeholder="Name">
 
                           </div>
                           <div class="form-group col-12">
                               <label>Bio</label>
-                              <textarea class="form-control" rows="3" placeholder="Enter Bio"></textarea>
+                              <textarea name="biography" class="form-control" rows="3" placeholder="Enter Bio"></textarea>
                           </div>
                           <div class="form-group col-12">
                               <label>Date of Birth</label>
                               <div class="rad-date row">
                                   <div class="dropdown col-4">
-                                      <select id="selectDay" class="form-control">
-                                          <option>Day</option>
+                                      <select id="selectDay" name="day" class="form-control" [ngModel]="userdata.day">
+                                          <option value="undefined">Day</option>
+                                          <option *ngFor="let day of cal_data.day" [ngValue]="day">{{day}}</option>
                                       </select>
                                   </div>
                                   <div class="dropdown col-4">
-                                      <select id="selectMonth" class="form-control">
-                                          <option>Month</option>
+                                      <select id="selectMonth" name="month" class="form-control" [ngModel]="userdata.month">
+                                          <option value="undefined">Month</option>
+                                          <option *ngFor="let mon of cal_data.month" [ngValue]="mon.id">{{mon.name}}</option>
                                       </select>
                                   </div>
 
                                   <div class="dropdown col-4">
-                                      <select id="selectYear" class="form-control">
-                                          <option>Year</option>
+                                      <select id="selectYear" name="year" class="form-control" [ngModel]="userdata.year">
+                                          <option value="undefined">Year</option>
+                                          <option *ngFor="let yr of cal_data.year" [ngValue]="yr">{{yr}}</option>
                                       </select>
                                   </div>
                               </div>
@@ -86,7 +92,7 @@
                       <h2 class="SideHeading">Payment Details</h2>
                   </div>
                   <div class="col-6 text-right">
-                      <a class="btn btn-info saveBtn" href="#" role="button">Save</a>
+                      <a class="btn btn-info saveBtn"  role="button">Save</a>
                   </div>
               </div>
               <div class="row">

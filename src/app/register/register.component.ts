@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { FirebaseService } from '../firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import { FirebaseService } from '../firebase.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  userDetail:any;
   user={
     firstName:'',
     lastName:'',
@@ -23,7 +25,8 @@ export class RegisterComponent implements OnInit {
   constructor(private firebaseService:FirebaseService,
     private fns: AngularFireFunctions,
     private db: AngularFirestore,
-    private afuth:AngularFireAuth) { }
+    private afuth:AngularFireAuth,
+    private router:Router) { }
 
   ngOnInit() {
   }
@@ -33,11 +36,14 @@ export class RegisterComponent implements OnInit {
       value=>{
         console.log(value);
         if(value){
-          this.db.collection('/users').doc(value.user.uid).set({
+          this.userDetail=value.user;
+          this.db.collection('/users').doc(this.userDetail.uid).set({
             name   : this.user.firstName + this.user.lastName,
             dateModified  : Date.now(),
             lastEntry   : Date.now()
           })
+          this.userDetail.sendEmailVerification();
+          this.router.navigate(['/login']);
         }
       },
       err=>{

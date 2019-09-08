@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { stringify } from '@angular/core/src/render3/util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,35 +13,43 @@ import { auth } from 'firebase/app';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+userDetail:any;
   user={
     email:'',
     password:''
   }
+  errMessage:String;
 
   constructor(private firebaseService:FirebaseService,
     private fns: AngularFireFunctions,
     private db: AngularFirestore,
-    private afuth:AngularFireAuth,) { }
+    private afuth:AngularFireAuth,
+    private router:Router) { }
 
   ngOnInit() {
   }
 
   submit(){
+    this.errMessage='';
     this.afuth.auth.signInWithEmailAndPassword(this.user.email,this.user.password).then(
       value=>{
         console.log(value);
         if(value){
-          this.db.collection('/users').doc(value.user.uid).set({
+          this.userDetail=value.user;
+          this.setUser(this.userDetail)
+          this.db.collection('/users').doc(this.userDetail.uid).set({
             lastEntry  : Date.now(),
             dateModified  : Date.now(),
             emailVerified  : value.user.emailVerified,
             phoneNumberVerified :value.user.phoneNumber ? true : false
           })
+    
+          this.router.navigate(['/home']);
         }
       },
       err=>{
-         console.log("user not found")
+        if(err && err.message)
+         this.errMessage=err.message;
       }
     )
     // const callable = this.fns.httpsCallable('createUserWithEmailAndPassword');
@@ -54,7 +64,15 @@ export class LoginComponent implements OnInit {
 
   loginWithGoogle(){
     let user =this.googleSignin();
-    console.log(user);
+    user.then(u=>{
+      this.userDetail=u.user;
+      this.setUser(this.userDetail);
+      this.userDetail.sendEmailVerification();
+    })
+  }
+
+  setUser(user){
+    localStorage.setItem('user',JSON.stringify(user));
   }
 
   async googleSignin() {
