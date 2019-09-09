@@ -12,5 +12,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  openWindow(){
+    window.open("C:\Users\sudhanshu\Pictures", null);
+  }
+
   
 }

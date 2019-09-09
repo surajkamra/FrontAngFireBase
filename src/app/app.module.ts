@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { LoginComponent } from './login/login.component';
      AngularFireFunctionsModule,
      AngularFireDatabaseModule
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService,AngularFireStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
