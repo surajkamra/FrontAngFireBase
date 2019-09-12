@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
-import { FirebaseService } from '../firebase.service';
+import { FirebaseService } from '../Services/firebase/firebase.service';
 import { Router } from '@angular/router';
+import {JbUser} from '../models//user_model'
 
 @Component({
   selector: 'app-register',
@@ -12,13 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   userDetail:any;
-  user={
-    firstName:'',
-    lastName:'',
-    email:'',
-    password:'',
-    confirmPassword:''
-  }
+  user:JbUser;
   confirmShow=false;
   show=false;
 
@@ -50,14 +45,5 @@ export class RegisterComponent implements OnInit {
          console.log(err.message)
       }
     )
-    // const callable = this.fns.httpsCallable('createUserWithEmailAndPassword');
-    // this.data$ = callable({"data":{ email: 'some-data',password:'sfkg' }})
-    // this.data$.subscribe(it=>{
-    //   console.log(it);
-    // })
-    // this.firebaseService.createUser(this.modalInput).then(it=>{
-    //   console.log(it);
-    // })
   }
-
 }

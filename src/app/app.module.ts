@@ -7,7 +7,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import{AngularFireDatabaseModule} from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import {FormsModule} from '@angular/forms';
-import { FirebaseService } from './firebase.service';
+import { FirebaseService } from './Services/firebase/firebase.service';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RegisterComponent } from './register/register.component';
