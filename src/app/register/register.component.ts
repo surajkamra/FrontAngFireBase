@@ -13,7 +13,7 @@ import {JbUser} from '../models//user_model'
 })
 export class RegisterComponent implements OnInit {
   userDetail:any;
-  user:JbUser;
+  user:JbUser = new JbUser();
   confirmShow=false;
   show=false;
 

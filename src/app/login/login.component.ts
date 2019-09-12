@@ -15,7 +15,7 @@ import { SelectedServiceService } from '../Services/miscelleneous/selected-servi
 })
 export class LoginComponent implements OnInit {
 userDetail:any;
-user:JbUser;
+user:JbUser=new JbUser();
 errMessage:string;
 
   constructor(private firebaseService:FirebaseService,
@@ -23,7 +23,9 @@ errMessage:string;
     private db: AngularFirestore,
     private afuth:AngularFireAuth,
     private router:Router,
-    private selectedService:SelectedServiceService) { }
+    private selectedService:SelectedServiceService) { 
+      console.log(this.user);
+    }
 
   ngOnInit() {
   }

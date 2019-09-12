@@ -10,14 +10,15 @@ import { JobComponent } from './job/job.component';
 import { TicketComponent } from './ticket/ticket.component';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path: 'register', component:RegisterComponent},
-  {path: 'login',component:LoginComponent},
-  {path:'home',component:HomeComponent},
-  {path:'book',component:BookComponent,canActivate:[AuthGuard]},
-  {path:'list',component:ListingComponent,canActivate:[AuthGuard]},
-  {path:'job',component:JobComponent,canActivate:[AuthGuard]},
-  {path:'tickets',component:TicketComponent,canActivate:[AuthGuard]}
+
+    {path:   '',          component:HomeComponent},
+    {path: 'register', component:RegisterComponent},
+    {path:  'login',   component:LoginComponent},
+    {path:  'home',    component:HomeComponent},
+    {path:  'book',    component:BookComponent,  canActivate:[AuthGuard]},
+    {path:  'list',    component:ListingComponent,canActivate:[AuthGuard]},
+    {path:  'job',     component:JobComponent,  canActivate:[AuthGuard]},
+    {path:  'tickets', component:TicketComponent, canActivate:[AuthGuard]}
 
 ];
 
