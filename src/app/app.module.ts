@@ -17,6 +17,13 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { ListingComponent } from './listing/listing.component';
+import { JobComponent } from './job/job.component';
+import { BookComponent } from './book/book.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { CastalComponent } from './castal/castal.component';
+import { CreateSpaceComponent } from './create-space/create-space.component';
+import { SuzukiRoomComponent } from './suzuki-room/suzuki-room.component';
 
 
 @NgModule({
@@ -26,7 +33,14 @@ import { AngularFireStorage } from '@angular/fire/storage';
     HomeComponent,
     HeaderComponent,
     SidebarComponent,
-    LoginComponent
+    LoginComponent,
+    ListingComponent,
+    JobComponent,
+    BookComponent,
+    TicketComponent,
+    CastalComponent,
+    CreateSpaceComponent,
+    SuzukiRoomComponent
   ],
   imports: [
     BrowserModule,

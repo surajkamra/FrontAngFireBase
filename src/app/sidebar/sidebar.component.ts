@@ -19,6 +19,7 @@ export class SidebarComponent implements OnInit {
 user:any;
 userdata={};
 downloadURL:any;
+cal_data={};
 
 
   constructor(private router:Router,
@@ -40,19 +41,22 @@ downloadURL:any;
   }
 
   editProfile(){
+    if(this.user)
     this.db.collection('/users').doc(this.user.uid).set({
       name : this.user.displayName,
-      bio : this.user.biography,
+      bio : this.user.bionn,
       profileImageUrl:this.user.photoURL,
     })
     this.getProfile()
   }
 
   getProfile(){
+    if(this.user)
        this.db.collection("/user").doc(this.user.uid).snapshotChanges().subscribe(
          it=>{
            let payloaddata=it.payload.data();
-           this.user={...this.user,payloaddata}; 
+           this.user={...this.user,...payloaddata};
+           console.log(this.user); 
          }
        );
   }
